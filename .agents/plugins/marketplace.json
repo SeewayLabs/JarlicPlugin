@@ -1,0 +1,20 @@
+{
+  "interface": {
+    "displayName": "Jarlic"
+  },
+  "plugins": [
+    {
+      "policy": {
+        "authentication": "ON_INSTALL",
+        "installation": "AVAILABLE"
+      },
+      "source": {
+        "path": "./jarlic",
+        "source": "local"
+      },
+      "category": "Productivity",
+      "name": "jarlic"
+    }
+  ],
+  "name": "jarlic-local"
+}

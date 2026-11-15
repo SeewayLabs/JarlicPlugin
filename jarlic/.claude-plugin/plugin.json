@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0",
+  "author": {
+    "name": "SeewayLabs"
+  },
+  "description": "Search Jarlic project context and source evidence.",
+  "name": "jarlic",
+  "icon": "./assets/logo.jpg"
+}

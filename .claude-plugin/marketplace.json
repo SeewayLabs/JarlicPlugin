@@ -1,0 +1,13 @@
+{
+  "owner": {
+    "name": "SeewayLabs"
+  },
+  "plugins": [
+    {
+      "source": "./jarlic",
+      "description": "Search Jarlic project context and source evidence.",
+      "name": "jarlic"
+    }
+  ],
+  "name": "jarlic-local"
+}

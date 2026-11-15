@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "jarlic": {
+      "type": "http",
+      "url": "https://app-jarlic-stg-web.azurewebsites.net/api/mcp"
+    }
+  }
+}

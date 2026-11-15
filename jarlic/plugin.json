@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "jarlic",
+  "version": "0.1.0",
+  "description": "Search Jarlic project context and source evidence.",
+  "author": {
+    "name": "SeewayLabs"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Jarlic",
+        "longDescription": "Search an authorized Jarlic project and review its source evidence.",
+        "shortDescription": "Explore project context",
+        "capabilities": [
+          "Read"
+        ],
+        "developerName": "SeewayLabs",
+        "category": "Productivity",
+        "logo": "./assets/logo.jpg",
+        "composerIcon": "./assets/logo.jpg"
+      }
+    }
+  }
+}
