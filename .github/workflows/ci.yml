@@ -43,7 +43,9 @@ jobs:
           assert.equal(openai.name, 'jarlic');
           assert.equal(claude.name, openai.name);
           assert.equal(claude.version, openai.version);
-          assert.deepEqual(mcp.mcpServers, legacyMcp.mcpServers);
+          assert.equal(mcp.mcpServers.jarlic.type, 'streamable-http');
+          assert.equal(legacyMcp.mcpServers.jarlic.type, 'http');
+          assert.equal(mcp.mcpServers.jarlic.url, legacyMcp.mcpServers.jarlic.url);
           assert.equal(new URL(mcp.mcpServers.jarlic.url).protocol, 'https:');
           console.log('Plugin manifests valid and aligned.');
           NODE
