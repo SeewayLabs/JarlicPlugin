@@ -59,3 +59,5 @@ upload is scoped to Codex desktop; other hosts are outside its current acceptanc
 Edit the package under `jarlic/` and keep its OpenAI and Claude manifest versions aligned. Validate JSON and the plugin before publishing an update. No credentials belong in this repository.
 
 Run `node --test tests/*.test.mjs` for the local file and binary-transfer checks.
+CI also validates the manifests and runs these checks on Windows and Linux
+with Node.js 22 and 24. It does not contact the hosted Jarlic service.

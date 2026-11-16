@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: plugin-ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validate:
+    name: Package and uploader (${{ matrix.os }}, Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [22, 24]
+    steps:
+      - name: Check out plugin
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Validate package manifests
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFileSync } from 'node:fs';
+          const read = path => JSON.parse(readFileSync(path, 'utf8'));
+          const paths = ['jarlic/plugin.json', 'jarlic/.claude-plugin/plugin.json', 'jarlic/mcp.json', 'jarlic/.mcp.json', '.agents/plugins/marketplace.json', '.claude-plugin/marketplace.json'];
+          const [openai, claude, mcp, legacyMcp] = paths.map(read);
+          assert.equal(openai.name, 'jarlic');
+          assert.equal(claude.name, openai.name);
+          assert.equal(claude.version, openai.version);
+          assert.deepEqual(mcp.mcpServers, legacyMcp.mcpServers);
+          assert.equal(new URL(mcp.mcpServers.jarlic.url).protocol, 'https:');
+          console.log('Plugin manifests valid and aligned.');
+          NODE
+      - name: Test local file and upload behavior
+        run: node --test tests/recording-upload.test.mjs
