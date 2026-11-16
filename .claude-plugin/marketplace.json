@@ -5,7 +5,7 @@
   "plugins": [
     {
       "source": "./jarlic",
-      "description": "Search Jarlic project context and source evidence.",
+      "description": "Research Jarlic Project context and create Meeting records.",
       "name": "jarlic"
     }
   ],

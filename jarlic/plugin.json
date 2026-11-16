@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "jarlic",
-  "version": "0.1.0",
-  "description": "Search Jarlic project context and source evidence.",
+  "version": "0.2.0",
+  "description": "Research Jarlic Projects, create Meetings, and attach local recordings from Codex desktop.",
   "author": {
     "name": "SeewayLabs"
   },
@@ -10,11 +10,9 @@
     "com.openai": {
       "interface": {
         "displayName": "Jarlic",
-        "longDescription": "Search an authorized Jarlic project and review its source evidence.",
-        "shortDescription": "Explore project context",
-        "capabilities": [
-          "Read"
-        ],
+        "longDescription": "Search an authorized Jarlic Project, review its source evidence, and create Meeting records. Codex desktop can attach local recordings with the bundled upload workflow.",
+        "shortDescription": "Research Projects and manage Meetings",
+        "capabilities": ["Read", "Write"],
         "developerName": "SeewayLabs",
         "category": "Productivity",
         "logo": "./assets/logo.jpg",
